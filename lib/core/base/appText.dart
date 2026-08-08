@@ -1,5 +1,6 @@
-import 'package:aerofix/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
+
+import '../utils/app_colors.dart';
 
 
 class AppText extends StatelessWidget {
@@ -39,7 +40,7 @@ class AppText extends StatelessWidget {
           TextStyle(
             letterSpacing: 0,
             height: 0,
-            fontFamily: "Inter",
+            fontFamily: "SfPro-Regular",
             fontSize: fontSize ?? 20,
             fontWeight: fontWeight ?? FontWeight.w500,
             fontStyle: fontStyle ?? FontStyle.normal,

@@ -32,22 +32,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.8
-
-dev_dependencies:
-  flutter_test:
+  flutter_localizations:
     sdk: flutter
 
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
-
-  flutter_lints: ^6.0.0
   cupertino_icons: ^1.0.8
   flutter_svg: ^2.2.1
   flutter_screenutil: ^5.9.3
@@ -65,7 +52,6 @@ dev_dependencies:
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   qr_flutter: ^4.1.0
-  flutter_localization: ^0.4.0
   connectivity_plus: ^7.0.0
   shimmer: ^3.0.0
   google_sign_in: ^7.2.0
@@ -88,6 +74,14 @@ dev_dependencies:
   intl_phone_number_input: ^0.7.5
   country_picker: ^2.0.28
   upgrader: ^13.5.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.14.4
+  flutter_native_splash: ^2.4.7
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -119,24 +113,25 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
-    - assets/font/
-    - .env
+    - assets/fonts/
     - assets/language/
-    - assets/animation/
-    - assets/animation/face.json
 
   fonts:
-    - family: Montserrat-Regular
+    - family: SfPro-Regular
       fonts:
-        - asset: assets/font/Montserrat-Regular.ttf
+        - asset: assets/fonts/SF-Pro-Text-Regular.otf
 
-    - family: Montserrat-Bold
+    - family: SfPro-Medium
       fonts:
-        - asset: assets/font/Montserrat-Bold.ttf
+        - asset: assets/fonts/SF-Pro-Text-Medium.otf
 
-    - family: BaksoSapi
+    - family: SfPro-Semibold
       fonts:
-        - asset: assets/font/BaksoSapi.otf
-  #
+        - asset: assets/fonts/SF-Pro-Text-Semibold.otf
+
+    - family: SfPro-Bold
+      fonts:
+        - asset: assets/fonts/SF-Pro-Text-Bold.otf
+
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
