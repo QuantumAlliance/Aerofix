@@ -26,8 +26,8 @@ class WelcomeScreen extends StatelessWidget {
               height: size.height * 0.62,
               child: ClipRRect(
                 borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(24),
-                  topRight: Radius.circular(24),
+                  topLeft: Radius.circular(16),
+                  topRight: Radius.circular(16),
                 ),
                 child: Image.asset(
                   'assets/images/houseImg.png',
@@ -80,6 +80,9 @@ class WelcomeScreen extends StatelessWidget {
 
                       CustomAppButton(
                         text: "Get Started",
+                        onTap: (){
+                          Get.toNamed(AppRoutes.signUpScreen);
+                        },
                       ),
                       const SizedBox(height: 10),
 

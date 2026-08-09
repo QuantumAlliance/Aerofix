@@ -1,9 +1,15 @@
+import 'package:aerofix/features/home/presentation/pages/home_screen.dart';
+import 'package:aerofix/features/inbox/presentation/pages/chat_screen.dart';
+import 'package:aerofix/features/my_job/presentation/pages/my_job_screen.dart';
+import 'package:aerofix/features/profile/presentation/pages/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import '../../utils/app_colors.dart';
-import '../../utils/app_icons.dart';
+
+import '../utils/app_colors.dart';
+import '../utils/app_icons.dart';
+
 
 
 class BottomNavScreen extends StatefulWidget {
@@ -30,7 +36,10 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
   }
 
   final List<Widget> _pages = [
-
+    HomeScreen(),
+    MyJobScreen(),
+    ChatScreen(),
+    ProfileScreen()
   ];
 
   @override

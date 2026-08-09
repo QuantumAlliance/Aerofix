@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-import '../../core/base/appText.dart';
-import '../../core/base/custom_app_button.dart';
-import '../../core/base/custom_text_field.dart';
-import '../../core/route/route.dart';
-import '../../core/utils/app_colors.dart';
-import 'sign_up_screen.dart';
+import '../../../../core/base/appText.dart';
+import '../../../../core/base/custom_app_button.dart';
+import '../../../../core/base/custom_text_field.dart';
+import '../../../../core/route/route.dart';
+import '../../../../core/utils/app_colors.dart';
+
+
 class LoginScreen extends StatelessWidget{
 
   final TextEditingController emailController = TextEditingController();
@@ -29,8 +30,8 @@ class LoginScreen extends StatelessWidget{
             height: size.height * 0.62,
             child: ClipRRect(
               borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(24),
-                topRight: Radius.circular(24),
+                topLeft: Radius.circular(16),
+                topRight: Radius.circular(16),
               ),
               child: Image.asset(
                 'assets/images/houseImg.png',
@@ -143,17 +144,25 @@ class LoginScreen extends StatelessWidget{
 
                     Align(
                       alignment: Alignment.centerRight,
-                      child: AppText(
-                        "Forgot Password?",
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                        color: Color(0xFF64748B),
+                      child: GestureDetector(
+                        onTap: () {
+                          Get.toNamed(AppRoutes.forgotPasswordScreen);
+                        },
+                        child: AppText(
+                          "Forgot Password?",
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFF64748B),
+                        ),
                       ),
                     ),
                     SizedBox(height: 14),
 
                     CustomAppButton(
                       text: "Log In",
+                      onTap: (){
+                        Get.offAllNamed(AppRoutes.bottomNavScreen);
+                      },
                     ),
                     const SizedBox(height: 16),
 

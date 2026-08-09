@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
-import '../../core/base/appText.dart';
-import '../../core/base/custom_app_button.dart';
-import '../../core/utils/app_colors.dart';
+import '../../../../core/base/appText.dart';
+import '../../../../core/base/custom_app_button.dart';
+import '../../../../core/route/route.dart';
+import '../../../../core/utils/app_colors.dart';
 
 class OtpScreen extends StatelessWidget {
 
@@ -26,11 +28,26 @@ class OtpScreen extends StatelessWidget {
             top: 0,
             left: 0,
             right: 0,
-            height: size.height * 0.35,
-            child: Image.asset(
-              'assets/images/splashImg.png',
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) => const SizedBox(),
+            child: Container(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Color(0xFFCCFBF1),
+                    Color(0x00CCFBF1),
+                  ],
+                ),
+              ),
+              child: Transform.scale(
+                scale: 1.8,
+                alignment: Alignment.topCenter,
+                child: Image.asset(
+                  'assets/images/dotedTopImg.png',
+                  fit: BoxFit.fitWidth,
+                  errorBuilder: (context, error, stackTrace) => const SizedBox(),
+                ),
+              ),
             ),
           ),
           
@@ -47,7 +64,7 @@ class OtpScreen extends StatelessWidget {
                     SvgPicture.asset(
                       'assets/icons/mainIconBlack.svg',
                     ),
-                    const SizedBox(height: 16),
+                    const SizedBox(height: 10),
 
                     // Title
                     AppText(
@@ -56,14 +73,13 @@ class OtpScreen extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                       color: const Color(0xFF0F172A),
                     ),
-                    const SizedBox(height: 32),
+                    const SizedBox(height: 16),
 
                     // Email Illustration Image
                     Image.asset(
                       'assets/images/emailImg.png',
                       height: 150,
                       fit: BoxFit.contain,
-                      errorBuilder: (context, error, stackTrace) => const SizedBox(height: 150),
                     ),
                     const SizedBox(height: 32),
 
@@ -124,18 +140,6 @@ class OtpScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
 
-                    // Helper Text
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: AppText(
-                        "Helper text",
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                        color: const Color(0xFF64748B),
-                      ),
-                    ),
-                    const SizedBox(height: 24),
-
                     // Resend Timer
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -163,9 +167,18 @@ class OtpScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 24),
 
-                    // Create Account Button
+                    // Verify/Create Account Button
                     CustomAppButton(
-                      text: "Create Account",
+                      text: (Get.arguments != null && Get.arguments['isForgotPassword'] == true) 
+                          ? "Verify" 
+                          : "Create Account",
+                      onTap: () {
+                        if (Get.arguments != null && Get.arguments['isForgotPassword'] == true) {
+                          Get.toNamed(AppRoutes.newPasswordScreen);
+                        } else {
+                          Get.toNamed(AppRoutes.setUpProfileScreen);
+                        }
+                      },
                     ),
                     const SizedBox(height: 32),
 

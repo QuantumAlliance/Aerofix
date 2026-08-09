@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-import '../../core/base/appText.dart';
-import '../../core/base/custom_app_button.dart';
-import '../../core/base/custom_text_field.dart';
-import '../../core/route/route.dart';
-import '../../core/utils/app_colors.dart';
+import '../../../../core/base/appText.dart';
+import '../../../../core/base/custom_app_button.dart';
+import '../../../../core/base/custom_text_field.dart';
+import '../../../../core/route/route.dart';
+import '../../../../core/utils/app_colors.dart';
 
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({super.key});
@@ -32,11 +32,25 @@ class SignUpScreen extends StatelessWidget {
             top: 0,
             left: 0,
             right: 0,
-            height: size.height * 0.35,
-            child: Image.asset(
-              'assets/images/splashImg.png',
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) => const SizedBox(),
+            child: Container(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Color(0xFFCCFBF1),
+                    Color(0x00CCFBF1),
+                  ],
+                ),
+              ),
+              child: Transform.scale(
+                scale: 1.8,
+                alignment: Alignment.topCenter,
+                child: Image.asset(
+                  'assets/images/dotedTopImg.png',
+                  fit: BoxFit.fitWidth,
+                ),
+              ),
             ),
           ),
           
@@ -337,7 +351,7 @@ class SignUpScreen extends StatelessWidget {
                         const SizedBox(width: 8),
                         GestureDetector(
                           onTap: () {
-                            Navigator.pop(context);
+                            Get.toNamed(AppRoutes.loginScreen);
                           },
                           child: AppText(
                             "Log In",
