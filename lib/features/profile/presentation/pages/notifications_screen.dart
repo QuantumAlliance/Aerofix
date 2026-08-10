@@ -1,27 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:flutter_advanced_switch/flutter_advanced_switch.dart';
 import '../../../../core/base/appText.dart';
 import '../../../../core/base/custom_app_bar.dart';
-import '../../../../core/utils/app_colors.dart';
 
-class NotificationsScreen extends StatefulWidget {
+class NotificationsScreen extends StatelessWidget {
   const NotificationsScreen({super.key});
-
-  @override
-  State<NotificationsScreen> createState() => _NotificationsScreenState();
-}
-
-class _NotificationsScreenState extends State<NotificationsScreen> {
-  // Job Notifications state
-  final _bookingUpdates = ValueNotifier<bool>(true);
-  final _technicianUpdates = ValueNotifier<bool>(true);
-  final _messages = ValueNotifier<bool>(true);
-  final _paymentAlerts = ValueNotifier<bool>(true);
-
-  // System & Updates state
-  final _systemNotification = ValueNotifier<bool>(true);
-  final _promotionsOffers = ValueNotifier<bool>(false);
 
   @override
   Widget build(BuildContext context) {
@@ -61,101 +43,101 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
               ),
             ),
           ),
-
-          // Content
-          Positioned.fill(
-            child: SafeArea(
-              child: SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(height: 20),
-                    
-                    // Job Notifications
-                    AppText(
-                      "Job Notifications",
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      color: const Color(0xFF0F172A),
-                    ),
-                    const SizedBox(height: 16),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(16),
-                        border: Border.all(color: const Color(0xFFE2E8F0)),
+          
+          SafeArea(
+            child: Column(
+              children: [
+                // Header Row
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      AppText(
+                        "New",
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: const Color(0xFF0F172A),
                       ),
-                      child: Column(
-                        children: [
-                          _buildNotificationItem(
-                            icon: Icons.calendar_today_outlined,
-                            title: "Booking updates",
-                            subtitle: "Get notified about booking confirmation, rescheduling, and cancellation.",
-                            controller: _bookingUpdates,
-                          ),
-                          const Divider(height: 1, color: Color(0xFFE2E8F0)),
-                          _buildNotificationItem(
-                            icon: Icons.work_outline,
-                            title: "Technician updates",
-                            subtitle: "Receive update when technician is assigned, on the way, or has arrived.",
-                            controller: _technicianUpdates,
-                          ),
-                          const Divider(height: 1, color: Color(0xFFE2E8F0)),
-                          _buildNotificationItem(
-                            icon: Icons.chat_bubble_outline,
-                            title: "Messages",
-                            subtitle: "Get notified about new messages from technicians and support.",
-                            controller: _messages,
-                          ),
-                          const Divider(height: 1, color: Color(0xFFE2E8F0)),
-                          _buildNotificationItem(
-                            icon: Icons.account_balance_wallet_outlined,
-                            title: "Payment alerts",
-                            subtitle: "Get notified about payment confirmation, refund, and due reminders.",
-                            controller: _paymentAlerts,
-                          ),
-                        ],
+                      GestureDetector(
+                        onTap: () {},
+                        child: AppText(
+                          "Mark all as read",
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                          color: const Color(0xFF334155),
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 24),
-
-                    // System & Updates
-                    AppText(
-                      "System & Updates",
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      color: const Color(0xFF0F172A),
-                    ),
-                    const SizedBox(height: 16),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(16),
-                        border: Border.all(color: const Color(0xFFE2E8F0)),
-                      ),
-                      child: Column(
-                        children: [
-                          _buildNotificationItem(
-                            icon: Icons.notifications_none,
-                            title: "system notification", // Lowercase per design
-                            subtitle: "Important update about announcement from Aerofix.",
-                            controller: _systemNotification,
-                          ),
-                          const Divider(height: 1, color: Color(0xFFE2E8F0)),
-                          _buildNotificationItem(
-                            icon: Icons.local_offer_outlined,
-                            title: "Promotions & Offers",
-                            subtitle: "Receive offers, discounts, and promotional updates.",
-                            controller: _promotionsOffers,
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 32),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
+                
+                Expanded(
+                  child: ListView(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    children: [
+                      _buildNotificationItem(
+                        icon: Icons.calendar_today_outlined,
+                        title: "Booking confirmed",
+                        subtitle: "Your booking for plumbing service on May 25, 2026 at 10:00 AM has been confirmed.",
+                        time: "00.56 AM",
+                        iconColor: const Color(0xFF3B82F6),
+                        bgColor: const Color(0xFFE0F2FE),
+                      ),
+                      _buildNotificationItem(
+                        icon: Icons.person_outline,
+                        title: "Technician assigned",
+                        subtitle: "Your ride to down town has ended successfully.",
+                        time: "00.56 AM",
+                        iconColor: const Color(0xFF3B82F6),
+                        bgColor: const Color(0xFFE0F2FE),
+                      ),
+                      _buildNotificationItem(
+                        icon: Icons.notifications_none_outlined,
+                        title: "Job completed",
+                        subtitle: "Your plumbing service has been completed. Please rate your experience.",
+                        time: "00.03 AM",
+                        iconColor: const Color(0xFF3B82F6),
+                        bgColor: const Color(0xFFE0F2FE),
+                      ),
+                      
+                      const SizedBox(height: 16),
+                      AppText(
+                        "Yesterday",
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: const Color(0xFF0F172A),
+                      ),
+                      const SizedBox(height: 12),
+                      
+                      _buildNotificationItem(
+                        icon: Icons.local_offer_outlined,
+                        title: "Special offer",
+                        subtitle: "Get 10% off on your next booking.\nUse code: Aerofix10star.",
+                        time: "09.23 PM",
+                        iconColor: const Color(0xFF3B82F6),
+                        bgColor: const Color(0xFFE0F2FE),
+                      ),
+                      _buildNotificationItem(
+                        icon: Icons.local_offer_outlined, // Same icon for promo
+                        title: "Promo available",
+                        subtitle: "get 10% off your next ride with swiftRides.",
+                        time: "00.56 AM",
+                        iconColor: const Color(0xFF0F172A),
+                        bgColor: const Color(0xFFF1F5F9), // Gray background
+                      ),
+                      _buildNotificationItem(
+                        icon: Icons.receipt_long_outlined,
+                        title: "Payment successful",
+                        subtitle: "Your payment of \$24.00 has been processed.",
+                        time: "00.03 AM",
+                        iconColor: const Color(0xFF0F172A),
+                        bgColor: const Color(0xFFF1F5F9), // Gray background
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
         ],
@@ -167,32 +149,45 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
     required IconData icon,
     required String title,
     required String subtitle,
-    required ValueNotifier<bool> controller,
+    required String time,
+    required Color iconColor,
+    required Color bgColor,
   }) {
     return Padding(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.only(bottom: 24),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            padding: const EdgeInsets.all(8),
+            width: 48,
+            height: 48,
             decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(8),
-              border: Border.all(color: const Color(0xFFE2E8F0)),
+              color: bgColor,
+              shape: BoxShape.circle,
             ),
-            child: Icon(icon, color: const Color(0xFF64748B), size: 20),
+            child: Icon(icon, color: iconColor, size: 20),
           ),
           const SizedBox(width: 16),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                AppText(
-                  title,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                  color: const Color(0xFF0F172A),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    AppText(
+                      title,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      color: const Color(0xFF0F172A),
+                    ),
+                    AppText(
+                      time,
+                      fontSize: 10,
+                      fontWeight: FontWeight.w400,
+                      color: const Color(0xFF94A3B8),
+                    ),
+                  ],
                 ),
                 const SizedBox(height: 4),
                 AppText(
@@ -203,14 +198,6 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                 ),
               ],
             ),
-          ),
-          const SizedBox(width: 16),
-          AdvancedSwitch(
-            controller: controller,
-            activeColor: AppColors.mainAppColor,
-            inactiveColor: const Color(0xFFE2E8F0),
-            width: 44,
-            height: 24,
           ),
         ],
       ),

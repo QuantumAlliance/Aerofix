@@ -11,7 +11,7 @@ class AppIcons{
 
   static String bookingsICon ="assets/icons/bookingIcon.svg";
   static String serviceNavIconS ="assets/icons/serviceS.svg";
-  static String bookingsIConS ="assets/icons/bookIngS.svg";
+ //static String bookingsIConS ="assets/icons/bookIngS.svg";
   static String googleIcon ="assets/icons/googleIcon.svg";
   static String appleIcon ="assets/icons/appleIcon.svg";
   static String fbIcon ="assets/icons/fbIcon.svg";

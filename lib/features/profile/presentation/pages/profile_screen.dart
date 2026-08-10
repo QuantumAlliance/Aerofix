@@ -159,7 +159,7 @@ class ProfileScreen extends StatelessWidget {
                           _buildMenuItem(
                             "Notification settings", 
                             "assets/icons/notificationSettingIcon.svg",
-                            onTap: () => Get.toNamed(AppRoutes.notificationsScreen),
+                            onTap: () => Get.toNamed(AppRoutes.notificationSettingsScreen),
                           ),
                           const Divider(height: 1, color: Color(0xFFE2E8F0)),
                           _buildMenuItem(
@@ -275,8 +275,8 @@ class ProfileScreen extends StatelessWidget {
           children: [
             SvgPicture.asset(
               iconPath,
-              width: 24,
-              height: 24,
+              width: 28,
+              height: 28,
             ),
             const SizedBox(width: 16),
             Expanded(

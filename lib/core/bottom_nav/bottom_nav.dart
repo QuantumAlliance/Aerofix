@@ -81,7 +81,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
           items: [
             _navItem(AppIcons.homeU,  AppIcons.homeS, "Home".tr, 0),
             _navItem(AppIcons.myjobU,        AppIcons.inboxIconS,  "My Job".tr,  1),
-            _navItem(AppIcons.inboxIconU,     AppIcons.bookingsIConS, "Chat".tr, 2),
+            _navItem(AppIcons.inboxIconU,     AppIcons.inboxIconS, "Chat".tr, 2),
             _navItem(AppIcons.profileIconU,      AppIcons.profileIconS,  "Profile".tr,  3),
           ],
         ),
